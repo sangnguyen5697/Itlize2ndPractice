@@ -90,13 +90,11 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPangramic(String[] array) {
         Set<Character> set = new HashSet<Character>();
-        
         for (String str : array) {
             for (char c : str.toLowerCase().toCharArray()) {
-                if (c != ' ') set.add(c);
+                if (Character.isLetter(c)) set.add(c);
             }
         }
-        int n = set.size();
         return set.size() == 26;
     }
 
@@ -123,8 +121,7 @@ public class StringArrayUtils {
         for (String str: array) {
             if (!str.equals(valueToRemove)) tempAL.add(str);
         }
-        String[] res = tempAL.stream().toArray(String[]::new);
-        return res;
+        return tempAL.stream().toArray(String[]::new);
     }
 
     /**
@@ -138,8 +135,7 @@ public class StringArrayUtils {
            if (i == 0) tempAL.add(array[i]);
            else if (!array[i].equals(array[i - 1])) tempAL.add(array[i]);
         }
-        String[] res = tempAL.stream().toArray(String[]::new);
-        return res;
+        return tempAL.stream().toArray(String[]::new);
     }
 
     /**
@@ -147,8 +143,7 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        String[] res = new String[] {};
-        if (array == null || array.length == 0) return res;
+        if (array == null || array.length == 0) return new String[] {};
         List<String> tempAL = new ArrayList<String>();
         int N = array.length;
         String temp = array[0];
@@ -161,8 +156,7 @@ public class StringArrayUtils {
             }
         }
         tempAL.add(temp);
-        res = tempAL.stream().toArray(String[]::new);
-        return res;
+        return tempAL.stream().toArray(String[]::new);
     }
 
 
